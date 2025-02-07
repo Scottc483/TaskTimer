@@ -1,0 +1,17 @@
+<!-- task-list.component.html -->
+<div class="task-list">
+  @if (tasks$ | async; as tasks) {
+    @if (tasks.length > 0) {
+      @for (task of tasks; track task.id) {
+        <app-task-item [task]="task" />
+      }
+    } @else {
+      <div class="empty-state">
+        <i class="material-icons icon-task">assignment</i>
+        <!-- <i class="material-icons icon-add">add_circle</i>
+        <p class="empty-message">No tasks yet</p>
+        <p class="empty-subtitle">Add your first task to get started</p> -->
+      </div>
+    }
+  }
+</div>

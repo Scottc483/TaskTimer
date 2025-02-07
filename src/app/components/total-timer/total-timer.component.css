@@ -1,0 +1,24 @@
+/* total-timer.component.css */
+.total-timer {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 2px solid #eee;
+    text-align: center;
+  }
+  
+  .time-display {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: monospace;
+    color: #333;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 200px;
+  }
+  
+  h2 {
+    color: #666;
+    margin-bottom: 10px;
+  }

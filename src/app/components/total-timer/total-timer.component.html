@@ -1,0 +1,6 @@
+<div class="total-timer">
+    <h2>Total Time</h2>
+    <div class="time-display">
+      {{ totalTime$ | async | number:'1.0-0' | function:formatTime }}
+    </div>
+  </div>

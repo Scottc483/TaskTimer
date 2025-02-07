@@ -1,0 +1,19 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <input 
+      type="text" 
+      formControlName="name" 
+      placeholder="Task name"
+      [class.invalid]="taskForm.get('name')?.invalid && taskForm.get('name')?.touched">
+    <input 
+      type="number" 
+      formControlName="duration" 
+      placeholder="Duration (minutes)"
+      [class.invalid]="taskForm.get('duration')?.invalid && taskForm.get('duration')?.touched">
+    <button 
+      type="submit" 
+      [disabled]="!taskForm.valid">
+      Add Task
+    </button>
+  </div>
+</form>

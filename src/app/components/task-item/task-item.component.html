@@ -1,0 +1,68 @@
+<div class="task-card" [class.completed]="task.isCompleted">
+  <div class="task-content">
+    <div class="task-header">
+      <h3 class="task-title">{{ task.name }}</h3>
+      <div class="task-badge" *ngIf="task.isCompleted">Completed</div>
+      <div class="task-badge task-badge-active" *ngIf="!task.isCompleted && !task.isRunning">Paused</div>
+      <div class="task-badge task-badge-active" *ngIf="!task.isCompleted && task.isRunning">Running</div>
+
+    </div>
+    
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="getProgress()">
+          <div class="progress-glow"></div>
+        </div>
+      </div>
+      <span class="progress-text">{{ getProgress().toFixed(2) }}%</span>
+    </div>
+
+    <div class="task-details">
+      <div class="time-info">
+        <div class="time-item">
+          <span class="label">Duration</span>
+          <span class="value">{{ task.duration }} min</span>
+        </div>
+        <div class="time-item">
+          <span class="label">Elapsed</span>
+          <span class="value">{{ formatTime(task.elapsed) }}</span>
+        </div>
+        @if (!task.isCompleted) {
+          <div class="time-item">
+            <span class="label">Remaining</span>
+            <span class="value">{{ formatTime(task.duration * 60 - task.elapsed) }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button 
+      (click)="toggleTimer()" 
+      [disabled]="task.isCompleted"
+      class="btn btn-primary"
+      [class.active]="task.isRunning">
+      <span class="btn-content">
+        <i class="material-icons">{{ task.isRunning ? 'pause' : 'play_arrow' }}</i>
+      </span>
+    </button>
+    
+    <button 
+      (click)="completeTask()" 
+      [disabled]="task.isCompleted"
+      class="btn btn-success">
+      <span class="btn-content">
+        <i class="material-icons">check</i>
+      </span>
+    </button>
+    
+    <button 
+      (click)="deleteTask()"
+      class="btn btn-danger">
+      <span class="btn-content">
+        <i class="material-icons">delete</i>
+      </span>
+    </button>
+  </div>
+</div>
